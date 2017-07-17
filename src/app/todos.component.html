@@ -1,0 +1,12 @@
+<div *ngFor="let uf of ufs">
+  <h3>{{uf.nome}}</h3>
+  <p>Área: {{uf.area}}
+  </p>
+    Atendimentos:
+    <span *ngFor="let dados of dados_da_samu">
+       <span *ngIf="dados.uf_id == uf.id">
+          {{dados.valor}} em {{dados.ano}}
+          <br>
+        </span>
+    </span>
+</div>

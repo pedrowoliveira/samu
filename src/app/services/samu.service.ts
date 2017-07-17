@@ -10,7 +10,7 @@ export class SamuService {
     return VALORES;
   }
 
-  getMunicipiosDoEstado(id: number): Dados[] {
+  getPorUFMunicipiosAtendidosPorEstado(id: number): Dados[] {
     let valoresDoEstado:Dados[] = [];
     for(let entry of VALORES){
       if(entry.uf_id == id){

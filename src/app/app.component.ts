@@ -1,39 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-
-import {UF} from './types/uf';
-import {UFService} from './services/uf.service'
-
-import {Dados} from './types/samu';
-import {SamuService} from './services/samu.service'
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  providers: [UFService, SamuService]
+  template: `
+  <h1>{{title}}</h1>
+  <a routerLink="/dados">Dados</a>
+  <a routerLink="/resumo">Resumo</a>
+  <a routerLink="/todos">Todos</a>
+  <router-outlet></router-outlet>
+  `
 })
-export class AppComponent implements OnInit {
-    title = 'app';
-    uf_id = 41;
-    uf : UF;
-    dados_da_samu : Dados[];
-    media: number;
-
-    constructor(private ufService: UFService, private samuService: SamuService)
-    { }
-
-    ngOnInit(): void {
-        this.uf = this.ufService.getUf(this.uf_id);
-        this.dados_da_samu = this.samuService.getMunicipiosDoEstado(this.uf_id);
-        this.media = this.calcularMedia();
-    }
-
-    calcularMedia(): number{
-      let acumulador: number = 0;
-      for(let entry of this.dados_da_samu){
-          acumulador += entry.valor;
-      }
-      acumulador = acumulador/this.dados_da_samu.length;
-      return Math.round(acumulador);
-    }
+export class AppComponent {
+  title = 'App Modularizado';
 }
