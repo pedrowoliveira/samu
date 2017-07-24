@@ -1,6 +1,5 @@
-
 export class Dados {
-    valor: number;
-    uf_id: number;
-    ano: number;
+  valor: number;
+  estado_ibge: number;
+  ano: number;
 }

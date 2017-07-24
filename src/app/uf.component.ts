@@ -23,10 +23,18 @@ export class UfComponent implements OnInit {
 
     ngOnInit(): void {
         this.uf = this.ufService.getPorID(this.uf_id);
-        this.dados_da_samu = this.samuService.getPorUFMunicipiosAtendidosPorEstado(this.uf_id);
+        this.getSamu();
         this.media = this.calcularMedia();
     }
 
+    getSamu(): void{
+      this.samuService
+        .getPorUFMunicipiosAtendidosPorEstado(this.uf_id)
+        .then(response => {
+          this.dados_da_samu = response;
+          this.media = this.calcularMedia();
+        })
+    }
     calcularMedia(): number{
       let acumulador: number = 0;
       for(let entry of this.dados_da_samu){

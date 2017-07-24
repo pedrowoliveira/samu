@@ -21,7 +21,15 @@ export class TodosComponent implements OnInit {
 
   ngOnInit() : void {
     this.ufs = this.ufService.getAll();
-    this.dados_da_samu = this.samuService.getAllMunicipiosAtendidosPorEstado();
+    this.getSamu();
   }
+  getSamu(): void{
+      this.samuService
+        .getAllMunicipiosAtendidosPorEstado()
+        .then(response => {
+          this.dados_da_samu = response;
+        })
+    }
+
 
 }
