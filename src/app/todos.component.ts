@@ -20,8 +20,16 @@ export class TodosComponent implements OnInit {
   { }
 
   ngOnInit() : void {
-    this.ufs = this.ufService.getAll();
+    this.getUfs();
     this.getSamu();
+  }
+
+  getUfs(): void {
+    this.ufService
+      .getAll()
+      .then(response => {
+        this.ufs = response;
+      })
   }
   getSamu(): void{
       this.samuService

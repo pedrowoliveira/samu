@@ -22,8 +22,16 @@ export class ResumoComponent implements OnInit {
   { }
 
   ngOnInit() : void {
-    this.uf = this.ufService.getPorID(this.uf_id);
+    this.getUf();
     this.getSamu();
+  }
+
+  getUf(): void {
+    this.ufService
+      .getPorID(this.uf_id)
+      .then(response => {
+        this.uf = response;
+      })
   }
 
   getSamu(): void{
